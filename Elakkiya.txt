@@ -1,0 +1,170 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| assignment1        |
+| customer           |
+| employee_detail    |
+| form_type          |
+| funtions           |
+| information_schema |
+| mysql              |
+| order_details      |
+| performance_schema |
+| player             |
+| student            |
+| students           |
+| students_details   |
+| sys                |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> use assignment1;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table dataset(No int,Name char(200),Department char(200),Dateofjoining date,Sex char(100));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc dataset;
++---------------+-----------+------+-----+---------+-------+
+| Field         | Type      | Null | Key | Default | Extra |
++---------------+-----------+------+-----+---------+-------+
+| No            | int       | YES  |     | NULL    |       |
+| Name          | char(200) | YES  |     | NULL    |       |
+| Department    | char(200) | YES  |     | NULL    |       |
+| Dateofjoining | date      | YES  |     | NULL    |       |
+| Sex           | char(100) | YES  |     | NULL    |       |
++---------------+-----------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> drop table dataset;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table dataset(No int,Name char(200),Department char(200),Dateofjoining date,salary bigint,Sex char(100));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc dataset;
++---------------+-----------+------+-----+---------+-------+
+| Field         | Type      | Null | Key | Default | Extra |
++---------------+-----------+------+-----+---------+-------+
+| No            | int       | YES  |     | NULL    |       |
+| Name          | char(200) | YES  |     | NULL    |       |
+| Department    | char(200) | YES  |     | NULL    |       |
+| Dateofjoining | date      | YES  |     | NULL    |       |
+| salary        | bigint    | YES  |     | NULL    |       |
+| Sex           | char(100) | YES  |     | NULL    |       |
++---------------+-----------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+mysql> insert into dataset values (2,'sangita','History','1997-05-21',9000,'F'),(3,'Ritu','Sociology','1998-08-29',8000,'F');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from dataset;
++------+---------+------------+---------------+--------+------+
+| No   | Name    | Department | Dateofjoining | salary | Sex  |
++------+---------+------------+---------------+--------+------+
+|    1 | Raja    | computer   | 1998-08-25    |   8000 | m    |
+|    2 | sangita | History    | 1997-05-21    |   9000 | F    |
+|    3 | Ritu    | Sociology  | 1998-08-29    |   8000 | F    |
++------+---------+------------+---------------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> insert into dataset values (4,'kumar','Linguistics','1996-06-13',10000,'M'),(5,'Venkat','History','1999-10-31',8000,'M'),(6,'Sindhu','computer','1986-05-21',14000,'M'),(7,'Aishwarya','sociology',1988-01-11',12000,'F');
+
+
+';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '',12000,'F');
+
+
+'' at line 1
+mysql> insert into dataset values (2,'sangita','History','1997-05-21',9000,'F')mysql> insert into dataset values (4,'kumar','Linguistics','1996-06-13',10000,'M'),(5,'Venkat','History','1999-10-31',8000,'M'),(6,'Sindhu','computer','1986-05-21',14000,'M'),(7,'Aishwarya','sociology',1988-01-11',12000,'F');
+mysql> insert into dataset values (4,'kumar','Linguistics','1996-06-13',10000,'M');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into dataset values (5,'venkat','history','1999-05-31',14000,'m');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into dataset values (6,'sindhu','computer','1986-10-21',8000,'f');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into dataset values (7,'aishwarya','sociology','1988-01-11',12000,'f');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from dataset;
++------+-----------+-------------+---------------+--------+------+
+| No   | Name      | Department  | Dateofjoining | salary | Sex  |
++------+-----------+-------------+---------------+--------+------+
+|    1 | Raja      | computer    | 1998-08-25    |   8000 | m    |
+|    2 | sangita   | History     | 1997-05-21    |   9000 | F    |
+|    3 | Ritu      | Sociology   | 1998-08-29    |   8000 | F    |
+|    4 | kumar     | Linguistics | 1996-06-13    |  10000 | M    |
+|    5 | venkat    | history     | 1999-05-31    |  14000 | m    |
+|    6 | sindhu    | computer    | 1986-10-21    |   8000 | f    |
+|    7 | aishwarya | sociology   | 1988-01-11    |  12000 | f    |
++------+-----------+-------------+---------------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select name,department,dateofjoining,salary from dataset;
++-----------+-------------+---------------+--------+
+| name      | department  | dateofjoining | salary |
++-----------+-------------+---------------+--------+
+| Raja      | computer    | 1998-08-25    |   8000 |
+| sangita   | History     | 1997-05-21    |   9000 |
+| Ritu      | Sociology   | 1998-08-29    |   8000 |
+| kumar     | Linguistics | 1996-06-13    |  10000 |
+| venkat    | history     | 1999-05-31    |  14000 |
+| sindhu    | computer    | 1986-10-21    |   8000 |
+| aishwarya | sociology   | 1988-01-11    |  12000 |
++-----------+-------------+---------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> select name,department from dataset where sex not in ('m') and department in ('history');
++---------+------------+
+| name    | department |
++---------+------------+
+| sangita | History    |
++---------+------------+
+1 row in set (0.00 sec)
+
+mysql> select name,department,salary from dataset where sex in ('m');
++--------+-------------+--------+
+| name   | department  | salary |
++--------+-------------+--------+
+| Raja   | computer    |   8000 |
+| kumar  | Linguistics |  10000 |
+| venkat | history     |  14000 |
++--------+-------------+--------+
+3 rows in set (0.00 sec)
+mysql> select * from dataset where salary<10000;
++------+---------+------------+---------------+--------+------+
+| No   | Name    | Department | Dateofjoining | salary | Sex  |
++------+---------+------------+---------------+--------+------+
+|    1 | Raja    | computer   | 1998-08-25    |   8000 | m    |
+|    2 | sangita | History    | 1997-05-21    |   9000 | F    |
+|    3 | Ritu    | Sociology  | 1998-08-29    |   8000 | F    |
+|    6 | sindhu  | computer   | 1986-10-21    |   8000 | f    |
++------+---------+------------+---------------+--------+------+
+4 rows in set (0.00 sec)
+mysql> insert into dataset values (8,'mersha','computer','2000-01-01',12000,'m
+');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from dataset;
++------+-----------+-------------+---------------+--------+------+
+| No   | Name      | Department  | Dateofjoining | salary | Sex  |
++------+-----------+-------------+---------------+--------+------+
+|    1 | Raja      | computer    | 1998-08-25    |   8000 | m    |
+|    2 | sangita   | History     | 1997-05-21    |   9000 | F    |
+|    3 | Ritu      | Sociology   | 1998-08-29    |   8000 | F    |
+|    4 | kumar     | Linguistics | 1996-06-13    |  10000 | M    |
+|    5 | venkat    | history     | 1999-05-31    |  14000 | m    |
+|    6 | sindhu    | computer    | 1986-10-21    |   8000 | f    |
+|    7 | aishwarya | sociology   | 1988-01-11    |  12000 | f    |
+|    8 | mersha    | computer    | 2000-01-01    |  12000 | m    |
++------+-----------+-------------+---------------+--------+------+
+8 rows in set (0.00 sec)
+
+
+

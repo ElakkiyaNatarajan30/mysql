@@ -1,0 +1,306 @@
+mysql> create database amazon
+    -> create database amazon;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create database amazon' at line 2
+mysql> create database amazon;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use amazon;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table amazon(name varchar(150),category varchar(20),price int(20),brand varchar(50),rating float(10));
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+mysql> select * from amazon;
+Empty set (0.01 sec)
+
+mysql> desc amazon;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| name     | varchar(150) | YES  |     | NULL    |       |
+| category | varchar(20)  | YES  |     | NULL    |       |
+| price    | int          | YES  |     | NULL    |       |
+| brand    | varchar(50)  | YES  |     | NULL    |       |
+| rating   | float        | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into amazon values('blue shirt','clothing',500,'crocodile',2.5),('checked shirt','clothing',1000,'peter england',4.5);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from amazon;
++---------------+----------+-------+---------------+--------+
+| name          | category | price | brand         | rating |
++---------------+----------+-------+---------------+--------+
+| blue shirt    | clothing |   500 | crocodile     |    2.5 |
+| checked shirt | clothing |  1000 | peter england |    4.5 |
++---------------+----------+-------+---------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into amazon values('full hand shirt','clothing',1500,'coolcolor',3.4),('causual shirt','clothing',1500,'luis pilppine',3.5);
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from amazon;
++-----------------+----------+-------+---------------+--------+
+| name            | category | price | brand         | rating |
++-----------------+----------+-------+---------------+--------+
+| blue shirt      | clothing |   500 | crocodile     |    2.5 |
+| checked shirt   | clothing |  1000 | peter england |    4.5 |
+| full hand shirt | clothing |  1500 | coolcolor     |    3.4 |
+| causual shirt   | clothing |  1500 | luis pilppine |    3.5 |
++-----------------+----------+-------+---------------+--------+
+4 rows in set (0.00 sec)
+
+mysql> insert into amazon values('black shirt','clothing',2000,'peter england',5.4),('t-shirt','clothing',400,'luis',4.4),('full hand tshirt','clothing',300,'puma',6.5);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from amazon;
++------------------+----------+-------+---------------+--------+
+| name             | category | price | brand         | rating |
++------------------+----------+-------+---------------+--------+
+| blue shirt       | clothing |   500 | crocodile     |    2.5 |
+| checked shirt    | clothing |  1000 | peter england |    4.5 |
+| full hand shirt  | clothing |  1500 | coolcolor     |    3.4 |
+| causual shirt    | clothing |  1500 | luis pilppine |    3.5 |
+| black shirt      | clothing |  2000 | peter england |    5.4 |
+| t-shirt          | clothing |   400 | luis          |    4.4 |
+| full hand tshirt | clothing |   300 | puma          |    6.5 |
++------------------+----------+-------+---------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> insert into amazon values('sleevless tshirt','clothing',1700,'polois',3.8),('jeans','clothing',2000,'levis',7.5),('blue jeans','clothing',2000,'levis',8.9);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from amazon;
++------------------+----------+-------+---------------+--------+
+| name             | category | price | brand         | rating |
++------------------+----------+-------+---------------+--------+
+| blue shirt       | clothing |   500 | crocodile     |    2.5 |
+| checked shirt    | clothing |  1000 | peter england |    4.5 |
+| full hand shirt  | clothing |  1500 | coolcolor     |    3.4 |
+| causual shirt    | clothing |  1500 | luis pilppine |    3.5 |
+| black shirt      | clothing |  2000 | peter england |    5.4 |
+| t-shirt          | clothing |   400 | luis          |    4.4 |
+| full hand tshirt | clothing |   300 | puma          |    6.5 |
+| sleevless tshirt | clothing |  1700 | polois        |    3.8 |
+| jeans            | clothing |  2000 | levis         |    7.5 |
+| blue jeans       | clothing |  2000 | levis         |    8.9 |
++------------------+----------+-------+---------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> insert into amazon values('brown','clothing',1580,'levis',4.5),('black jeans','clothing',1300,'levis',5.6);
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from amazon;
++------------------+----------+-------+---------------+--------+
+| name             | category | price | brand         | rating |
++------------------+----------+-------+---------------+--------+
+| blue shirt       | clothing |   500 | crocodile     |    2.5 |
+| checked shirt    | clothing |  1000 | peter england |    4.5 |
+| full hand shirt  | clothing |  1500 | coolcolor     |    3.4 |
+| causual shirt    | clothing |  1500 | luis pilppine |    3.5 |
+| black shirt      | clothing |  2000 | peter england |    5.4 |
+| t-shirt          | clothing |   400 | luis          |    4.4 |
+| full hand tshirt | clothing |   300 | puma          |    6.5 |
+| sleevless tshirt | clothing |  1700 | polois        |    3.8 |
+| jeans            | clothing |  2000 | levis         |    7.5 |
+| blue jeans       | clothing |  2000 | levis         |    8.9 |
+| brown            | clothing |  1580 | levis         |    4.5 |
+| black jeans      | clothing |  1300 | levis         |    5.6 |
++------------------+----------+-------+---------------+--------+
+12 rows in set (0.00 sec)
+
+mysql> update amazon set name='Brown Jeans' where price=1580;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from amazon;
++------------------+----------+-------+---------------+--------+
+| name             | category | price | brand         | rating |
++------------------+----------+-------+---------------+--------+
+| blue shirt       | clothing |   500 | crocodile     |    2.5 |
+| checked shirt    | clothing |  1000 | peter england |    4.5 |
+| full hand shirt  | clothing |  1500 | coolcolor     |    3.4 |
+| causual shirt    | clothing |  1500 | luis pilppine |    3.5 |
+| black shirt      | clothing |  2000 | peter england |    5.4 |
+| t-shirt          | clothing |   400 | luis          |    4.4 |
+| full hand tshirt | clothing |   300 | puma          |    6.5 |
+| sleevless tshirt | clothing |  1700 | polois        |    3.8 |
+| jeans            | clothing |  2000 | levis         |    7.5 |
+| blue jeans       | clothing |  2000 | levis         |    8.9 |
+| Brown Jeans      | clothing |  1580 | levis         |    4.5 |
+| black jeans      | clothing |  1300 | levis         |    5.6 |
++------------------+----------+-------+---------------+--------+
+12 rows in set (0.00 sec)
+
+mysql> insert into amazon values('chips','snacks',200,'a1',2.3),('banana chips','snacks',300,'noruks',3.6),('potato chips','snacks',250,'noruks',6.6);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from amazon;
++------------------+----------+-------+---------------+--------+
+| name             | category | price | brand         | rating |
++------------------+----------+-------+---------------+--------+
+| blue shirt       | clothing |   500 | crocodile     |    2.5 |
+| checked shirt    | clothing |  1000 | peter england |    4.5 |
+| full hand shirt  | clothing |  1500 | coolcolor     |    3.4 |
+| causual shirt    | clothing |  1500 | luis pilppine |    3.5 |
+| black shirt      | clothing |  2000 | peter england |    5.4 |
+| t-shirt          | clothing |   400 | luis          |    4.4 |
+| full hand tshirt | clothing |   300 | puma          |    6.5 |
+| sleevless tshirt | clothing |  1700 | polois        |    3.8 |
+| jeans            | clothing |  2000 | levis         |    7.5 |
+| blue jeans       | clothing |  2000 | levis         |    8.9 |
+| Brown Jeans      | clothing |  1580 | levis         |    4.5 |
+| black jeans      | clothing |  1300 | levis         |    5.6 |
+| chips            | snacks   |   200 | a1            |    2.3 |
+| banana chips     | snacks   |   300 | noruks        |    3.6 |
+| potato chips     | snacks   |   250 | noruks        |    6.6 |
++------------------+----------+-------+---------------+--------+
+15 rows in set (0.00 sec)
+
+mysql> insert into amazon values('bourbon','biscuit',50,'britania',5.6),('bourbon small','biscuit',100,'britania',7.8),('bourbon large','biscuit',150,'britania',6.8);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from amazon;
++------------------+----------+-------+---------------+--------+
+| name             | category | price | brand         | rating |
++------------------+----------+-------+---------------+--------+
+| blue shirt       | clothing |   500 | crocodile     |    2.5 |
+| checked shirt    | clothing |  1000 | peter england |    4.5 |
+| full hand shirt  | clothing |  1500 | coolcolor     |    3.4 |
+| causual shirt    | clothing |  1500 | luis pilppine |    3.5 |
+| black shirt      | clothing |  2000 | peter england |    5.4 |
+| t-shirt          | clothing |   400 | luis          |    4.4 |
+| full hand tshirt | clothing |   300 | puma          |    6.5 |
+| sleevless tshirt | clothing |  1700 | polois        |    3.8 |
+| jeans            | clothing |  2000 | levis         |    7.5 |
+| blue jeans       | clothing |  2000 | levis         |    8.9 |
+| Brown Jeans      | clothing |  1580 | levis         |    4.5 |
+| black jeans      | clothing |  1300 | levis         |    5.6 |
+| chips            | snacks   |   200 | a1            |    2.3 |
+| banana chips     | snacks   |   300 | noruks        |    3.6 |
+| potato chips     | snacks   |   250 | noruks        |    6.6 |
+| bourbon          | biscuit  |    50 | britania      |    5.6 |
+| bourbon small    | biscuit  |   100 | britania      |    7.8 |
+| bourbon large    | biscuit  |   150 | britania      |    6.8 |
++------------------+----------+-------+---------------+--------+
+18 rows in set (0.00 sec)
+
+mysql> select * from amazon where name='puma';
+Empty set (0.00 sec)
+
+mysql> select * from amazon where brand='puma';
++------------------+----------+-------+-------+--------+
+| name             | category | price | brand | rating |
++------------------+----------+-------+-------+--------+
+| full hand tshirt | clothing |   300 | puma  |    6.5 |
++------------------+----------+-------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from amazon where name='%jeans';
+Empty set (0.00 sec)
+
+mysql> select * from amazon where name='jeans%';
+Empty set (0.00 sec)
+
+mysql> select * from amazon where name='%jeans%';
+Empty set (0.00 sec)
+
+mysql> select * from amazon where name like '%jeans%';
++-------------+----------+-------+-------+--------+
+| name        | category | price | brand | rating |
++-------------+----------+-------+-------+--------+
+| jeans       | clothing |  2000 | levis |    7.5 |
+| blue jeans  | clothing |  2000 | levis |    8.9 |
+| Brown Jeans | clothing |  1580 | levis |    4.5 |
+| black jeans | clothing |  1300 | levis |    5.6 |
++-------------+----------+-------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from amazon where name like '%bourbon';
++---------+----------+-------+----------+--------+
+| name    | category | price | brand    | rating |
++---------+----------+-------+----------+--------+
+| bourbon | biscuit  |    50 | britania |    5.6 |
++---------+----------+-------+----------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from amazon where name like 'bourbon%';
++---------------+----------+-------+----------+--------+
+| name          | category | price | brand    | rating |
++---------------+----------+-------+----------+--------+
+| bourbon       | biscuit  |    50 | britania |    5.6 |
+| bourbon small | biscuit  |   100 | britania |    7.8 |
+| bourbon large | biscuit  |   150 | britania |    6.8 |
++---------------+----------+-------+----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from amazon where name like 'chips';
++-------+----------+-------+-------+--------+
+| name  | category | price | brand | rating |
++-------+----------+-------+-------+--------+
+| chips | snacks   |   200 | a1    |    2.3 |
++-------+----------+-------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from amazon where name like '%h_r_';
++------------------+----------+-------+---------------+--------+
+| name             | category | price | brand         | rating |
++------------------+----------+-------+---------------+--------+
+| blue shirt       | clothing |   500 | crocodile     |    2.5 |
+| checked shirt    | clothing |  1000 | peter england |    4.5 |
+| full hand shirt  | clothing |  1500 | coolcolor     |    3.4 |
+| causual shirt    | clothing |  1500 | luis pilppine |    3.5 |
+| black shirt      | clothing |  2000 | peter england |    5.4 |
+| t-shirt          | clothing |   400 | luis          |    4.4 |
+| full hand tshirt | clothing |   300 | puma          |    6.5 |
+| sleevless tshirt | clothing |  1700 | polois        |    3.8 |
++------------------+----------+-------+---------------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select name,price from amazon where price<=1000;
++------------------+-------+
+| name             | price |
++------------------+-------+
+| blue shirt       |   500 |
+| checked shirt    |  1000 |
+| t-shirt          |   400 |
+| full hand tshirt |   300 |
+| chips            |   200 |
+| banana chips     |   300 |
+| potato chips     |   250 |
+| bourbon          |    50 |
+| bourbon small    |   100 |
+| bourbon large    |   150 |
++------------------+-------+
+10 rows in set (0.00 sec)
+
+mysql> select name,rating from amazon where rating>4.0;
++------------------+--------+
+| name             | rating |
++------------------+--------+
+| checked shirt    |    4.5 |
+| black shirt      |    5.4 |
+| t-shirt          |    4.4 |
+| full hand tshirt |    6.5 |
+| jeans            |    7.5 |
+| blue jeans       |    8.9 |
+| Brown Jeans      |    4.5 |
+| black jeans      |    5.6 |
+| potato chips     |    6.6 |
+| bourbon          |    5.6 |
+| bourbon small    |    7.8 |
+| bourbon large    |    6.8 |
++------------------+--------+
+12 rows in set (0.00 sec)
+
+mysql>

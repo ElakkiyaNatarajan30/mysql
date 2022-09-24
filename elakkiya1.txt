@@ -1,0 +1,199 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| assignment1        |
+| customer           |
+| employee_detail    |
+| form_type          |
+| funtions           |
+| information_schema |
+| mysql              |
+| order_details      |
+| performance_schema |
+| player             |
+| student            |
+| students           |
+| students_details   |
+| sys                |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> use assignment1;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table players (name char(10),age int(2),score int(2));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> desc players;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| name  | char(10) | YES  |     | NULL    |       |
+| age   | int      | YES  |     | NULL    |       |
+| score | int      | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into players values ('raj',26,120);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from players;
++------+------+-------+
+| name | age  | score |
++------+------+-------+
+| raj  |   26 |   120 |
++------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into players values ('Ram',28,125),('Charan',25,173),('Ravan',20,152);
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from players;
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| raj    |   26 |   120 |
+| Ram    |   28 |   125 |
+| Charan |   25 |   173 |
+| Ravan  |   20 |   152 |
++--------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into players values ('Suresh',21,9);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from players;
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| raj    |   26 |   120 |
+| Ram    |   28 |   125 |
+| Charan |   25 |   173 |
+| Ravan  |   20 |   152 |
+| Suresh |   21 |     9 |
++--------+------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into players values ('Shyam',20,60);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from players;
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| raj    |   26 |   120 |
+| Ram    |   28 |   125 |
+| Charan |   25 |   173 |
+| Ravan  |   20 |   152 |
+| Suresh |   21 |     9 |
+| Shyam  |   20 |    60 |
++--------+------+-------+
+6 rows in set (0.00 sec)
+
+mysql> update players set age=30 where name='shyam';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from players;
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| raj    |   26 |   120 |
+| Ram    |   28 |   125 |
+| Charan |   25 |   173 |
+| Ravan  |   20 |   152 |
+| Suresh |   21 |     9 |
+| Shyam  |   30 |    60 |
++--------+------+-------+
+6 rows in set (0.00 sec)
+
+mysql> insert into players values ('david',20,44);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from players;
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| raj    |   26 |   120 |
+| Ram    |   28 |   125 |
+| Charan |   25 |   173 |
+| Ravan  |   20 |   152 |
+| Suresh |   21 |     9 |
+| Shyam  |   30 |    60 |
+| david  |   20 |    44 |
++--------+------+-------+
+7 rows in set (0.00 sec)
+
+mysql> delete from players where name='david';
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from players;
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| raj    |   26 |   120 |
+| Ram    |   28 |   125 |
+| Charan |   25 |   173 |
+| Ravan  |   20 |   152 |
+| Suresh |   21 |     9 |
+| Shyam  |   30 |    60 |
++--------+------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table players add strike_rate int after score;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from players;
++--------+------+-------+-------------+
+| name   | age  | score | strike_rate |
++--------+------+-------+-------------+
+| raj    |   26 |   120 |        NULL |
+| Ram    |   28 |   125 |        NULL |
+| Charan |   25 |   173 |        NULL |
+| Ravan  |   20 |   152 |        NULL |
+| Suresh |   21 |     9 |        NULL |
+| Shyam  |   30 |    60 |        NULL |
++--------+------+-------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> select name,age from players;
++--------+------+
+| name   | age  |
++--------+------+
+| raj    |   26 |
+| Ram    |   28 |
+| Charan |   25 |
+| Ravan  |   20 |
+| Suresh |   21 |
+| Shyam  |   30 |
++--------+------+
+6 rows in set (0.00 sec)
+
+mysql> alter table players rename column name to full_name;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from players;
++-----------+------+-------+-------------+
+| full_name | age  | score | strike_rate |
++-----------+------+-------+-------------+
+| raj       |   26 |   120 |        NULL |
+| Ram       |   28 |   125 |        NULL |
+| Charan    |   25 |   173 |        NULL |
+| Ravan     |   20 |   152 |        NULL |
+| Suresh    |   21 |     9 |        NULL |
+| Shyam     |   30 |    60 |        NULL |
++-----------+------+-------+-------------+
+6 rows in set (0.00 sec)
+
+
+mysql> select * from players;
+ERROR 1146 (42S02): Table 'assignment1.players' doesn't exist
+mysql> 
+
+
